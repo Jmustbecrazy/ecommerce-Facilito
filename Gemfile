@@ -29,6 +29,8 @@ gem 'devise'
 gem 'haml-rails'
 #boostrap para diseño
 gem 'bootstrap-sass'
+#gema para material design
+gem 'bootstrap-material-design'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

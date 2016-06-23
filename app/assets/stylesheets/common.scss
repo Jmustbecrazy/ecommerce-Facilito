@@ -1,0 +1,94 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+//una vez instalado la gema bootsrap la importamos
+@import 'bootstrap';
+
+$green: #16a085;
+$grey: #5A6576;
+$other-grey: #E7ECEE;
+$blue: #058CC5;
+$red: #d2527f;
+$light-blue: #3498db;
+
+/* colores */
+.white{
+	background-color: white;
+}
+
+.white-text{
+	color: white;
+}
+
+.green{
+	background-color: $green;
+}
+
+.green-text{
+	color: $green;
+}
+
+.blue{
+	background-color: $blue;
+}
+
+.blue-text{
+	color: $blue;
+}
+
+.light-blue{
+	background-color: $light-blue;
+}
+
+.light-blue-text{
+	color: $light-blue;
+}
+
+.red{
+	background-color: $red;
+}
+
+.red-text{
+	color: $red;
+}
+
+.grey{
+	background-color: $grey;
+}
+
+.grey-text{
+	color: $grey;
+}
+
+.other-grey{
+	background-color: $other-grey;
+}
+
+.other-grey-text{
+	color: $other-grey;
+}
+
+/* Paddings*/
+.big-padding{
+	padding: 2em;
+}
+
+.no-padding{
+	padding: 0;
+}
+/* alineamiento */
+.no-float{
+	float: none !important;
+}
+
+.inline-block{
+	float: none !important;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+/* tamaños */
+.ultra-big{
+	font-size: 6.5em;
+}

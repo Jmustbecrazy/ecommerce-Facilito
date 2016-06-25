@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   #accion por url
   #get 'welcome/index'
 
+  post '/emails/create', as: :create_email
+
+
   #si el usuario esta autenticado
   authenticated :user do
     #manda al controlador welcomer la vista index

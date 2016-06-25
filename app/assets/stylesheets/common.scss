@@ -77,6 +77,12 @@ $light-blue: #3498db;
 .no-padding{
 	padding: 0;
 }
+
+/* margins */
+.top-space{
+	margin-top: 1em;
+}
+
 /* alineamiento */
 .no-float{
 	float: none !important;
@@ -88,7 +94,27 @@ $light-blue: #3498db;
 	vertical-align: middle;
 }
 
+.absolute{
+	position: absolute;
+}
+
 /* tamaños */
+.small{
+	font-size: 12px;
+}
+
+.medium{
+	font-size: 1.5em;
+}
+
+.big{
+	font-size: 3em;
+}
+
+.bigger{
+	font-size: 4em;
+}
+
 .ultra-big{
-	font-size: 6.5em;
+	font-size: 7em;
 }

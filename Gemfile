@@ -45,7 +45,10 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   #gemas para el testing de modelos
+
+  #para legivilidad empieza con "should" 
   gem 'shoulda-matchers'
+  #las pruebas empiezan con "it"
   gem 'rspec-rails'
   gem 'factory_girl_rails', '~> 4.0'
 end

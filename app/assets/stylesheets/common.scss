@@ -70,6 +70,10 @@ $light-blue: #3498db;
 }
 
 /* Paddings*/
+.large-padding{
+	padding: 5px 10px;
+}
+
 .big-padding{
 	padding: 2em;
 }
@@ -81,6 +85,10 @@ $light-blue: #3498db;
 /* margins */
 .top-space{
 	margin-top: 1em;
+}
+
+.bottom-space{
+	margin-bottom: 2em;
 }
 
 /* alineamiento */

@@ -31,6 +31,8 @@ gem 'haml-rails'
 gem 'bootstrap-sass'
 #gema para material design
 gem 'bootstrap-material-design'
+#gema para el manejo de imagenes
+gem 'paperclip'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

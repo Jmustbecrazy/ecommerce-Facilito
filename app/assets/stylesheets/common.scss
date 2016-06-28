@@ -12,6 +12,11 @@ $blue: #058CC5;
 $red: #d2527f;
 $light-blue: #3498db;
 
+/* texto */
+.bold{
+	font-weight: bold;
+}
+
 /* colores */
 .white{
 	background-color: white;
@@ -100,6 +105,8 @@ $light-blue: #3498db;
 	float: none !important;
 	display: inline-block;
 	vertical-align: middle;
+	//solucion que siempre debe estar al crear el inline-block
+	margin-right: -4px;
 }
 
 .absolute{
@@ -109,6 +116,10 @@ $light-blue: #3498db;
 /* tamaños */
 .small{
 	font-size: 12px;
+}
+
+.normal{
+	font-size: 1.2em;
 }
 
 .medium{

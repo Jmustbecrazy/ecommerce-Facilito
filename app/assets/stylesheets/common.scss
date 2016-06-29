@@ -88,6 +88,9 @@ $light-blue: #3498db;
 }
 
 /* margins */
+.no-margin{
+	margin: 0;
+}
 .top-space{
 	margin-top: 1em;
 }
@@ -99,6 +102,10 @@ $light-blue: #3498db;
 /* alineamiento */
 .no-float{
 	float: none !important;
+}
+
+.in-top{
+	vertical-align: top !important;
 }
 
 .inline-block{

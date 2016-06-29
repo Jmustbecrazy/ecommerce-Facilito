@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :attachments, only:[:create, :destroy, :new]
+  #get 'attachments/create'
+
+  #get 'attachments/destroy'
+
+  #get 'attachments/new'
+
   resources :products
   devise_for :users
   #accion por url

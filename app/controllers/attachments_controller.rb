@@ -2,10 +2,15 @@ class AttachmentsController < ApplicationController
   #debe tener un inicio de sesión
   before_action :authenticate_user!
   #para el error que salia al eliminar archivo
-  before_action :set_attachment, only: [:destroy]
+  before_action :set_attachment, only: [:destroy, :show]
   before_action :set_product, only: [:destroy]
   #debe ser el propietario
-  before_action :authenticate_owner!
+  before_action :authenticate_owner!, except: :show
+
+  def show
+    #para poder descargar archivo
+    send_file @attachment.file.path
+  end
 
   def new
   end

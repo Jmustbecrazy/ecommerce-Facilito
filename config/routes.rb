@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :attachments, only:[:create, :destroy, :new]
+  resources :attachments, only:[:create, :destroy, :new, :show]
   #get 'attachments/create'
 
   #get 'attachments/destroy'

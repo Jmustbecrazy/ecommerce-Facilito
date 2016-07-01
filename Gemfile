@@ -48,8 +48,10 @@ gem 'paypal-sdk-rest'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  #gemas para el testing de modelos
 
+  #anotacion de los modelos
+  gem 'annotate'
+  #gemas para el testing de modelos
   #para legivilidad empieza con "should" 
   gem 'shoulda-matchers'
   #las pruebas empiezan con "it"

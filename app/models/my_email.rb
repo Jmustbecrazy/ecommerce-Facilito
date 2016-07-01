@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: my_emails
+#
+#  id         :integer          not null, primary key
+#  email      :string
+#  ip         :string
+#  state      :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class MyEmail < ActiveRecord::Base
 	#lo que se quiere verificar en rspec se tiene que validar acá
 	validates_presence_of :email

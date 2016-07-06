@@ -152,3 +152,16 @@ $light-blue: #3498db;
 .ultra-big{
 	font-size: 7em;
 }
+
+/* button */
+.payment-btn{
+	border-radius: 3px;
+	border: none;
+	color: #FFF;
+	padding: 1em 2em;
+	outline: none;
+}
+
+.paypal-btn{
+	background-color: #FE1935;
+}

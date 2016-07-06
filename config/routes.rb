@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :attachments, only:[:create, :destroy, :new, :show]
   resources :products
   resources :in_shopping_carts, only:[:create, :destroy]
@@ -7,9 +8,13 @@ Rails.application.routes.draw do
   #get 'welcome/index'
 
   post '/emails/create', as: :create_email
+  #link al apretar boton de paypal
+  post '/pagar', to: 'payments#create'
+
   #ruta para carrito
   get '/carrito', to: 'shopping_carts#show'
   get '/add/:product_id', as: :add_to_cart, to: 'in_shopping_carts#create'
+  get '/checkout', to: 'payments#checkout'
 
   #si el usuario esta autenticado
   authenticated :user do

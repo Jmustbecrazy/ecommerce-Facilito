@@ -35,6 +35,8 @@ gem 'bootstrap-material-design'
 gem 'paperclip'
 #gema que usaremos para implementar el modo de pago en paypal
 gem 'paypal-sdk-rest'
+#gema para maquina de estados
+gem 'aasm'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

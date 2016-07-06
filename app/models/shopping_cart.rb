@@ -39,6 +39,10 @@ class ShoppingCart < ActiveRecord::Base
 		suma
 	end
 
+	def items
+		self.products.map { |product| product.paypal_form }
+	end
+
 	def total
 		#manera eficiente
 		products.sum(:pricing)		

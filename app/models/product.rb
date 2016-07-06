@@ -15,22 +15,6 @@
 #  updated_at          :datetime         not null
 #
 
-  # == Schema Information
-#
-# Table name: products
-#
-#  id                  :integer          not null, primary key
-#  name                :string
-#  pricing             :decimal(10, 2)
-#  description         :text
-#  user_id             :integer
-#  avatar_file_name    :string
-#  avatar_content_type :string
-#  avatar_file_size    :integer
-#  avatar_updated_at   :datetime
-#  created_at          :datetime         not null
-#  updated_at          :datetime         not null
-#
 
 class Product < ActiveRecord::Base
   #relacion con el modelo user
@@ -46,4 +30,14 @@ class Product < ActiveRecord::Base
 
   #relacion con el modelo attachment
   has_many :attachment
+
+  def paypal_form
+    {
+      :name => name,
+      :sku => :item,
+      :price => (pricing / 100),
+      :currency => "USD",
+      :quantity => 1
+    }
+  end
 end

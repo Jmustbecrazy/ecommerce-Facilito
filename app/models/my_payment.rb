@@ -15,4 +15,19 @@
 #
 
 class MyPayment < ActiveRecord::Base
+	belongs_to :shopping_cart
+	include AASM
+
+	aasm column: "status" do
+		state :incomplete, :initial => true
+		state :payed, :failed
+		#evento
+		event :pay do
+			after do
+				shopping_cart.pay!
+			end
+			transitions :from => :incomplete, :to => :payed
+    	end
+	end
+    
 end

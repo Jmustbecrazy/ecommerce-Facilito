@@ -39,6 +39,13 @@ module Stores
 	    	self.payment
 		end
 
+		def self.checkout(payer_id, payment_id, &block)
+			payment = Payment.find(payment_id)
+			if payment.execute(payer_id: payer_id)
+				yield if block_given?							
+			end			
+		end
+
 
 	end
 end

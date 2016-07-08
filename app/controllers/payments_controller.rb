@@ -1,6 +1,27 @@
 class PaymentsController < ApplicationController
   include PayPal::SDK::REST
 
+
+  def process_card
+    paypal_helper = Stores::Paypal.new(shopping_cart: @shopping_cart,
+       return_url: checkout_url,
+       cancel_url: carrito_url,
+       total: @shopping_cart.total,
+       items: @shopping_cart.items)
+
+    if paypal_helper.process_card(params).create
+      #creamos un nuevo pago
+      @my_payment = MyPayment.create!(paypal_id: paypal_helper.payment.id,
+          ip: request.remote_ip,
+          email: params[:email],
+          shopping_cart_id: cookies[:shopping_cart_id])
+      @my_payment.pay!
+      redirect_to carrito_path, notice: "La compra fue exitosa"
+    else
+      redirect_to carrito_path, notice: paypal_helper.payment.error
+    end    
+  end
+
   def checkout
     @my_payment = MyPayment.find_by(paypal_id: params[:paymentId])
     #validacion
@@ -15,7 +36,6 @@ class PaymentsController < ApplicationController
       redirect_to carrito_path, notice: "Hubo un error, intentelo luego!"
     end    
   end
-
 
   def checkout2
   	@my_payment = MyPayment.find_by(paypal_id: params[:paymentId])

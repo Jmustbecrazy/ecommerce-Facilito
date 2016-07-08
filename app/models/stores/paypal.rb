@@ -13,8 +13,30 @@ module Stores
 		end
 
 		def process_payment
-			# Build Payment object
-			self.payment = Payment.new({
+			#creamos el objeto payment de la gema paypal
+			self.payment = Payment.new(payment_options)
+	    	self.payment
+		end
+
+		def process_card(card_data)
+			options = payment_options
+			options[:payer][:payment_method] = "credit_card"
+			options[:payer][:funding_instruments] = [{
+				:credit_card => {
+					:type => CreditCardValidator::Validator.card_type(card_data[:number]),
+					:number => card_data[:number],
+					:expire_month => card_data[:expire_month],
+					:expire_year => card_data[:expire_year],
+					:cvv2 => card_data[:cvv2]
+				}
+			}]
+			#creamos el objeto payment de la gema paypal
+			self.payment = Payment.new(options)
+	    	self.payment
+		end
+
+		def payment_options
+			{
 				:intent => "sale",
 	    		:payer => {
 	    			:payment_method => "paypal"
@@ -35,8 +57,7 @@ module Stores
 	    			#:return_url => "http://localhost:3000/checkout",
 	    			#:cancel_url => "http://localhost:3000/carrito"
 	    		}
-	    	})
-	    	self.payment
+	    	}
 		end
 
 		def self.checkout(payer_id, payment_id, &block)

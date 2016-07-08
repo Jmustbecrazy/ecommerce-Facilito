@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   post '/emails/create', as: :create_email
   #link al apretar boton de paypal
   post '/pagar', to: 'payments#create'
+  #ruta para el pago con tarjeta
+  post 'payments/cards', to: 'payments#process_card'
 
   #ruta para carrito
   get '/carrito', to: 'shopping_carts#show'

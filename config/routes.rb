@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   get '/add/:product_id', as: :add_to_cart, to: 'in_shopping_carts#create'
   get '/checkout', to: 'payments#checkout'
 
+  #ruta creada comenzando el tutorial de reiniciar carrito
+  get '/ok', to: 'welcome#payment_succed'
+
   #si el usuario esta autenticado
   authenticated :user do
     #manda al controlador welcomer la vista index

@@ -30,7 +30,7 @@ class PaymentsController < ApplicationController
     else
       Stores::Paypal.checkout(params[:PayerID], params[:paymentId]) do
         @my_payment.pay!
-        redirect_to carrito_path, notice: "Se proceso el pago con Paypal"
+        redirect_to ok_path, notice: "Se proceso el pago con Paypal"
         return
       end
       redirect_to carrito_path, notice: "Hubo un error, intentelo luego!"

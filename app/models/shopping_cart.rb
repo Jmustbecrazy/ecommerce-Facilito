@@ -13,9 +13,8 @@ class ShoppingCart < ActiveRecord::Base
 	include AASM
 	has_many :products, through: :in_shopping_carts
 	has_many :in_shopping_carts
-	#si status = 0 -> no esta pagado
-	#si status = 1 -> esta pagado
-	#enum status: {payed: 1, default: 0}
+	# relacion 1 - * con MyPayments
+	has_many :my_payments
 
 	aasm column: "status" do
 		state :incomplete, :initial => true
@@ -23,20 +22,27 @@ class ShoppingCart < ActiveRecord::Base
 		#evento
 		event :pay do
 			after do
+				self.generate_links()
 				#mandar los archivos que el usuario compro
 			end
 			transitions :from => :incomplete, :to => :payed
     	end
 	end
 
-	#metodo que sacara el total
-	def totaless
-		#manera ineficiente
-		suma = 0
-		products.each do |product|
-			suma += product.pricing
+	def payment
+		begin
+			my_payments.payed.first
+			#excepcion en caso no haya nada
+		rescue Exception => e
+			return nil
 		end
-		suma
+
+	end
+
+	def generate_links
+		self.products.each do |product|
+			Link.create(expiration_date: DateTime.now + 7.days, product: product, email: payment.email)
+		end
 	end
 
 	def items

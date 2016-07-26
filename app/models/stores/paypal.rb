@@ -60,6 +60,13 @@ module Stores
 	    	}
 		end
 
+		def self.get_email(payment_id)
+			#para sacar el correo
+        	payment = Payment.find(payment_id)
+        	#retornamos el email con metodos de paypal
+        	payment.payer.payer_info.email
+		end
+
 		def self.checkout(payer_id, payment_id, &block)
 			payment = Payment.find(payment_id)
 			if payment.execute(payer_id: payer_id)

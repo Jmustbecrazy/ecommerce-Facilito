@@ -17,12 +17,38 @@
 require 'digest/md5'
 class Link < ActiveRecord::Base
   before_create :set_defaults
+  after_create :send_email
   belongs_to :product
+  has_many :link_attachments
+
+  def is_invalid?
+    (DateTime.now > self.expiration_date || self.downloads >= 5)
+  end
+
+  def update_downloads
+    self.update(downloads: self.downloads + 1)
+  end
+
+  def create_attachment_links
+    product.attachments.each do |attachment|
+      #creamos un link con cada attachement
+      self.link_attachments.create(attachment: attachment)
+    end
+  end
+
+  def links
+    link_attachments.limit(product.attachments.count)
+  end
 
   private
   def set_defaults
   	self.custom_id = Digest::MD5.hexdigest("#{DateTime.now}#{self.id}#{self.product_id}")  	
   	#en caso especificamos ignora el 0
   	self.downloads ||= 0
+  end
+
+  def send_email
+  	#clase creada en la carpeta mailer(deliver_now => metodo de ruby en nuevas versiones)
+  	LinkMailer.download_link(self).deliver_now	
   end
 end

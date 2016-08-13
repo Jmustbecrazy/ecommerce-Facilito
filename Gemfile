@@ -61,6 +61,8 @@ group :development, :test do
   #las pruebas empiezan con "it"
   gem 'rspec-rails'
   gem 'factory_girl_rails', '~> 4.0'
+
+  gem 'letter_opener'
 end
 
 group :development do

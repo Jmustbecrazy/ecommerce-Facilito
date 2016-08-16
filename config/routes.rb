@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   #ruta creada comenzando el tutorial de reiniciar carrito
   get '/ok', to: 'welcome#payment_succed'
 
+  get "/ordenes", to: "ordenes#index"
+
   #si el usuario esta autenticado
   authenticated :user do
     #manda al controlador welcomer la vista index

@@ -31,6 +31,13 @@ class Product < ActiveRecord::Base
   #relacion con el modelo attachment
   has_many :attachment
 
+  #relacion muchos a muchos con shoping_cart
+  has_one :shopping_cart, through: :in_shopping_carts
+  has_many :in_shopping_carts
+
+  has_many :my_payments, through: :shopping_cart
+
+
   def paypal_form
     {
       :name => name,
@@ -40,4 +47,9 @@ class Product < ActiveRecord::Base
       :quantity => 1
     }
   end
+
+  def sales
+    my_payments.payed    
+  end
+
 end
